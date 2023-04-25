@@ -12,22 +12,22 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-/*
+
 mongoose
   .connect(process.env.ATLAS_URI)
   .then(() => console.log("Connected to database"))
   .catch((error) => console.error(error))
 
 
-*/
+
 
 app.get("/", (req,res)=>{
   res.send('Api is running')
 })
 
-/*
+
 app.use("/api", workers);
-*/
+
 
 
 app.listen(port, () => {
