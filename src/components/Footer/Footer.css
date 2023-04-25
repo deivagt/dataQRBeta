@@ -1,0 +1,17 @@
+.Footer-wrapper{
+    background-color: rgb(181, 181, 181);
+    height: 17rem;
+    padding: 2rem;
+    padding-left: 4rem;
+    display: flex;
+    flex-direction: column;
+}
+.Footer-wrapper >h1{
+    font-size: 2rem;
+    font-weight: 800;
+    
+}
+.Footer-wrapper >a{
+    font-size: 1.4rem;
+    color: inherit;
+}

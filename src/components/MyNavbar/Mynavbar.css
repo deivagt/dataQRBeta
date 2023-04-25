@@ -1,0 +1,49 @@
+ 
+.home-link{
+    color: inherit; 
+    text-decoration: inherit;
+}
+.navbar-title {
+    color: white;
+    margin: 0;
+    font-size: 3.2rem;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+    
+    
+    
+}
+.navbar-logo {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   height: 5rem;
+    width: 5rem;
+    height: 5rem;
+    margin:auto;
+}
+
+.navbar-logo img{
+    max-width: 90%;
+    max-height: 90%;
+}
+.navbar-item {
+    
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    margin-left: 3rem;
+}
+
+.navbar-search-box {
+
+}
+
+.navbar-search-button {
+
+}
+
+.navbar-toggler span{
+    width: 2.5rem;
+    height: 2.5rem;
+}
