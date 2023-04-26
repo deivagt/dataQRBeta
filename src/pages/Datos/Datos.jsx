@@ -47,11 +47,7 @@ const Datos = () => {
               <span>{data.tipoSangre}</span>
             </div>
 
-            {(data.alergias === undefined || data.alergias.length === 0)
-              ?
-              <div></div>
-              :
-              <div>{data.alergias.map((el, i) => { return (<div key={i}>{el} </div>) })}</div>}
+            
 
           </div>
 

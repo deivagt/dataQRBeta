@@ -6,6 +6,14 @@ const workersSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
+    fechaDocumento:{
+        type: String,
+        required: true,
+    },
+    urlImagen:{
+        type: String,
+        required: true,
+    },
     nombre:{
         type: String,
         required: true,
@@ -14,22 +22,70 @@ const workersSchema = mongoose.Schema({
         type: String,
         required: false,
     },
-    enfermedades: {
-        type: Array,
+    inicioLabores:{
+        type: String,
+        required: true,
+    },
+    fechaNacimiento:{
+        type: String,
         required: false,
+    },
+    igss:{
+        type: String,
+        required: false,
+    },
+    edad:{
+        type: Number,
+        required: true,
+    },
+    estadoCivil:{
+        type: String,
+        required: false,
+    },
+    sabeLeer:{
+        type: Number,
+        required: true,
+    },
+    sabeEscribir:{
+        type: Number,
+        required: true,
+    },
+    numeroCasa:{
+        type: String,
+        required: false,
+    },
+    numeroCelular:{
+        type: String,
+        required: false,
+    },
+    alcohol:{
+        type: Number,
+        required: true,
+    },
+    fuma:{
+        type: Number,
+        required: true,
+    },
+    drogas:{
+        type: Number,
+        required: true,
     },
     alergias:{
+        type: Object,
+        required: true,
+    },
+    miscelaneo:{
+        type: Object,
+        required: true,
+    },
+    tresMeses:{
+        type: Object,
+        required: true,
+    },
+    fichaMedica:{
         type: Array,
-        required: false,
+        required: true,
     },
-    tipoSangre: {
-        type: String,
-        required: false,
-    },
-    urlImagen: {
-        type: String,
-        required: false,
-    }
 },{collection:"workers"})
 
 module.exports = mongoose.model('workers', workersSchema)

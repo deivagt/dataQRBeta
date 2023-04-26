@@ -8,6 +8,7 @@ const Scanner = () => {
         redirect: false,
         data: ''
     });
+    const [manual, setManual] = useState("")
 
     const onNewScanResult = (decodedText, decodedResult) => {
         setData({
@@ -15,6 +16,12 @@ const Scanner = () => {
             decodedText: decodedText
         })
     };
+    const buttonHandler = () =>{
+        setData({
+            redirect: true,
+            decodedText: manual
+        })
+    }
     return (
         <div className="Scanner-main">
             <h1>Leer</h1>
@@ -28,7 +35,8 @@ const Scanner = () => {
                 ></Navigate>
                 :
                 <div className="Scanner-camera-container">
-
+                    <input onChange={(e)=>{setManual(e.target.value)}}></input>
+                    <button onClick={(e)=>{buttonHandler()}}>Buscar</button>
                     <Html5QrcodePlugin
                         fps={10}
                         qrbox={250}
