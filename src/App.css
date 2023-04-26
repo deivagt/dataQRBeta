@@ -1,4 +1,7 @@
+
+
 .main-section{
     max-width: 900px;
     margin: auto;
+    min-height: 70vh;
 }

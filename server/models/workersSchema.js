@@ -25,6 +25,10 @@ const workersSchema = mongoose.Schema({
     tipoSangre: {
         type: String,
         required: false,
+    },
+    urlImagen: {
+        type: String,
+        required: false,
     }
 },{collection:"workers"})
 

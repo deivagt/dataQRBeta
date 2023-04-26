@@ -1,14 +1,16 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home/Home';
-import Other from '../pages/Other/Other';
+import Scanner from '../pages/Scanner/Scanner';
+import Datos from '../pages/Datos/Datos';
 const AppRoutes = () => {
     return (
         <BrowserRouter>
             
             <Routes>
                 <Route exact path="/" element={<Home />} />
-                <Route exact path="/Other" element={<Other />} />
+                <Route exact path="/Leer" element={<Scanner />} />
+                <Route exact path="/Datos" element={<Datos />} />
             </Routes>
 
         </BrowserRouter>
