@@ -22,55 +22,7 @@ const workersSchema = mongoose.Schema({
         type: String,
         required: false,
     },
-    inicioLabores:{
-        type: String,
-        required: true,
-    },
-    fechaNacimiento:{
-        type: String,
-        required: false,
-    },
-    igss:{
-        type: String,
-        required: false,
-    },
-    edad:{
-        type: Number,
-        required: true,
-    },
-    estadoCivil:{
-        type: String,
-        required: false,
-    },
-    sabeLeer:{
-        type: Number,
-        required: true,
-    },
-    sabeEscribir:{
-        type: Number,
-        required: true,
-    },
-    numeroCasa:{
-        type: String,
-        required: false,
-    },
-    numeroCelular:{
-        type: String,
-        required: false,
-    },
-    alcohol:{
-        type: Number,
-        required: true,
-    },
-    fuma:{
-        type: Number,
-        required: true,
-    },
-    drogas:{
-        type: Number,
-        required: true,
-    },
-    alergias:{
+    personal:{
         type: Object,
         required: true,
     },
@@ -78,7 +30,15 @@ const workersSchema = mongoose.Schema({
         type: Object,
         required: true,
     },
+    seguridadIndustral:{
+        type: Object,
+        required: true,
+    },
     tresMeses:{
+        type: Object,
+        required: true,
+    },
+    saludPrincipal:{
         type: Object,
         required: true,
     },
