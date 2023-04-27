@@ -1,5 +1,5 @@
 // file = Html5QrcodePlugin.jsx
-import { Html5QrcodeScanner, Html5Qrcode } from 'html5-qrcode';
+import {  Html5Qrcode } from 'html5-qrcode';
 import { useEffect } from 'react';
 
 const qrcodeRegionId = "html5qr-code-full-region"; 
@@ -27,7 +27,6 @@ const Html5QrcodePlugin = (props) => {
     useEffect(() => {
         // when component mounts
         const config = createConfig(props);
-        const verbose = props.verbose === true;
         // Suceess callback is required.
         if (!(props.qrCodeSuccessCallback)) {
             throw "qrCodeSuccessCallback is required callback.";

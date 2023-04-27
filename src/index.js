@@ -10,7 +10,7 @@ const root = createRoot(rootElement);
 
 // 👇️ if you use TypeScript, add non-null (!) assertion operator
 // const root = createRoot(rootElement!);
-
+// REACT_APP_API_URL=https://dataqr-backend.onrender.com
 root.render(
     <App />
 );

@@ -32,28 +32,16 @@ const Datos = () => {
             <div>{data.nombre}</div>
             <div>{data.puesto}</div>
             <div>#{data.idEmpleado}</div>
-
-
-
-
           </div>
           <div className='Datos-salud Datos-seccion' >
             <div>
               <span>Ficha Medica</span>
             </div>
-
             <div className='Datos-salud-elemento'>
               <span>Tipo de Sangre: </span>
               <span>{data.tipoSangre}</span>
             </div>
-
-            
-
           </div>
-
-
-
-
         </div>
 
       }
