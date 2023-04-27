@@ -49,24 +49,21 @@
     font-size: 1.4rem; 
     color: rgba(0,0,0,0.6);
 }
-.Datos-salud{
-    position: relative;
-    padding-top: 35px;
+.Datos-tab-container {
+    width: 90%;
 }
-.Datos-salud div:nth-child(1) {
+
+
+.Datos-header{
     display: flex;
     width: 200px;
     height: auto;
-    background-color: rgb(184,33,40);
-    position: absolute;
-    top:-15px;
-    left:0;
-    right:0;
-    margin: auto;
-
+    background-color: rgb(126, 25, 30);
+    align-self: center;
+    justify-self: center;
+    margin-bottom: 8px;
 }
-
-.Datos-salud div:nth-child(1) > span {
+.Datos-header > span{
     width: inherit;
     font-size: 2.0rem;
     font-weight: bold;
@@ -74,7 +71,41 @@
     display: block;
     text-align: center;
     padding: 2px 10px;
+}
 
+
+.Datos-generales{
+   display: flex;
+   flex-direction: column;
+   width: 100%;
+
+}
+.Datos-generales-separador {
+    font-size: 2rem;
+    font-weight: bold;
+}
+.Datos-generales-elemento{
+    font-size: 1.6rem;
+    color: black;
+}
+.Datos-generales-elemento span:nth-child(1) {
+    font-weight: bold;
+    padding-right: 4px;
+}
+.Datos-generales-elemento-objeto{
+    font-size: 1.6rem;
+    color: black;
+}
+.Datos-generales-elemento-objeto span:nth-child(1) {
+    font-weight: bold;
+    padding-right: 4px;
+}
+
+
+.Datos-salud{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .Datos-salud-elemento{
     font-size: 1.6rem;
@@ -82,4 +113,5 @@
 }
 .Datos-salud-elemento span:nth-child(1) {
     font-weight: bold;
+    padding-right: 8px;
 }

@@ -12,5 +12,9 @@ const root = createRoot(rootElement);
 // const root = createRoot(rootElement!);
 // REACT_APP_API_URL=https://dataqr-backend.onrender.com
 root.render(
+   
+    
     <App />
+    
+    
 );
