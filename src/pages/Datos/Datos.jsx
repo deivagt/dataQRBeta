@@ -6,19 +6,27 @@ import './Datos.css'
 import 'react-tabs/style/react-tabs.css';
 const Datos = () => {
 	const [data, setData] = useState(useLocation().state)
-	console.log(useLocation().state)
-	const [collapseFlag, setCollapseFlag] = useState({ generales: true, salud: true })
+	const [collapsedFlags, setCollapsedFlags] = useState({ salud: true, industrial: true, adicional: true, })
 	useEffect(() => {
 
-		if (data !== null) {
+		if (data !== null ||  data !== undefined) {
 			axios(process.env.REACT_APP_API_URL + '/api/workers/' + data.id)
 				.then(async (res) => {
 					await setData(res.data)
-					console.log(res.data)
 				});
 		}
 
 	}, [])
+ 
+
+	const buttonSaludhandler = (e) => {
+		const temp = !collapsedFlags.salud;
+		setCollapsedFlags({
+			...collapsedFlags,
+			salud: temp
+		})
+	} 
+
 	return (
 		<div>
 			{(data === null || data.id !== undefined) ?
@@ -69,9 +77,9 @@ const Datos = () => {
 					<div className='Datos-tab-container'>
 						<Tabs>
 							<TabList>
-								<Tab style={{ fontSize: '16px' }}><div style={{ textAlign: 'center' }}>Datos<br></br>Salud</div></Tab>
+								<Tab style={{ fontSize: '16px' }}><div style={{ textAlign: 'center' }}>Informacion<br></br>Medica</div></Tab>
 								<Tab style={{ fontSize: '16px' }}><div style={{ textAlign: 'center' }}> Seguridad<br></br>Industrial</div></Tab>
-								<Tab style={{ fontSize: '16px' }}><div style={{ textAlign: 'center' }}>Mas<br></br>Informacion</div></Tab>
+								<Tab style={{ fontSize: '16px' }}><div style={{ textAlign: 'center' }}>Datos<br></br>Adicionales</div></Tab>
 
 
 
@@ -140,21 +148,29 @@ const Datos = () => {
 												<span>{(data.saludPrincipal) ? data.saludPrincipal.bajaPresion.observacion : ''}</span></div>
 										</div>
 									</div>
-									<div className='Datos-personales-separador'>Informacion Adicional</div>
-									<div>
-										{(data.fichaMedica) ? data.fichaMedica.map((el, i) => {
-											return <div className='Datos-salud-elemento' key={i}>
-												<div>
-													<span>{el.titulo + ":"} </span>
-													<span>{el.estado === 1 ? 'Si' : 'No'}</span>
+									<div className='Datos-personales-separador' onClick={(e)=> buttonSaludhandler(e)}>
+										<span>Informacion Adicional</span> 
+										{collapsedFlags.salud === true ? <i className='bi-plus'></i> :<i className='bi-dash'></i>}
+										
+										</div>
+
+									{collapsedFlags.salud === true ? '' :
+										<div>
+											{(data.fichaMedica) ? data.fichaMedica.map((el, i) => {
+												return <div className='Datos-salud-elemento' key={'sal' + i}>
+													<div>
+														<span>{el.titulo + ":"} </span>
+														<span>{el.estado === 1 ? 'Si' : 'No'}</span>
+													</div>
+													<div>
+														<span>{'Observacion:'}</span>
+														<span>{el.observacion}</span>
+													</div>
 												</div>
-												<div>
-													<span>{'Observacion:'}</span>
-													<span>{el.observacion}</span>
-												</div>
-											</div>
-										}) : ''}
-									</div>
+											}) : ''}
+										</div>
+									}
+
 
 
 								</div>
@@ -162,8 +178,51 @@ const Datos = () => {
 
 							<TabPanel>
 								<div className=' Datos-seccion Datos-seguridad ' >
+									<div className='Datos-header '>
+										<span>Seguridad Industrial</span>
+									</div>
+									<div>
+										<div className='Datos-seguridad-objeto'>
+											<div>
+												<span>Capacitaciones recibidas:</span>
+											</div>
+										</div>
+										<div>
 
-									
+											{(data.seguridadIndustral.capacitaciones) ? data.seguridadIndustral.capacitaciones.map((el, i) => {
+												return <div className='Datos-seguridad-elemento' key={'seg' + i}>
+													<div>
+														<span>{el}</span>
+													</div>
+												</div>
+											}) : ''}
+										</div>
+										<div className='Datos-seguridad-objeto'>
+											<div>
+												<span>Memo:</span>
+												<span>{(data.seguridadIndustral) ? data.seguridadIndustral.urlMemo : ''}</span>
+											</div>
+										</div>
+										<div className='Datos-seguridad-objeto'>
+											<div>
+												<span>Sanciones o felicitaciones:</span>
+												<span>{(data.seguridadIndustral) ? data.seguridadIndustral.sancionFelicitacion : ''}</span>
+											</div>
+										</div>
+										<div className='Datos-seguridad-objeto'>
+											<div>
+												<span>Sanciones por equipo de proteccion:</span>
+												<span>{(data.seguridadIndustral) ? data.seguridadIndustral.sancionProteccion : ''}</span>
+											</div>
+										</div>
+										<div className='Datos-seguridad-objeto'>
+											<div>
+												<span>Accidentes Laborales:</span>
+												<span>{(data.seguridadIndustral) ? data.seguridadIndustral.accidentesLaborales : ''}</span>
+											</div>
+										</div>
+									</div>
+
 
 								</div>
 							</TabPanel>
@@ -171,7 +230,7 @@ const Datos = () => {
 								<div className=' Datos-seccion Datos-extra ' >
 
 									<div className='Datos-header'>
-										<span>Datos Generales</span>
+										<span>Datos Adicionales</span>
 									</div>
 
 

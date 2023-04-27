@@ -92,6 +92,8 @@
  .Datos-personales-separador {
      font-size: 2rem;
      font-weight: bold;
+     display: flex;
+     justify-content: space-between;
  }
  .Datos-personales-elemento{
      font-size: 1.6rem;
@@ -147,14 +149,14 @@
     color: black;
 }
 .Datos-seguridad-elemento span:nth-child(1) {
-    font-weight: bold;
+    font-weight: 200;
     padding-right: 8px;
 }
-.Datos-seguridad-principal-objeto{
+.Datos-seguridad-objeto{
     font-size: 1.6rem;
     color: black;
 }
-.Datos-seguridad-principal-objeto span:nth-child(1) {
+.Datos-seguridad-objeto span:nth-child(1) {
     font-weight: bold;
     padding-right: 4px;
 }
