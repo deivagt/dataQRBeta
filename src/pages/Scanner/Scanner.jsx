@@ -9,29 +9,38 @@ const Scanner = () => {
         data: ''
     });
     const [manual, setManual] = useState("")
-
+    const [html5QrCodeState, setHtml5QrCodeState] = useState(null)
     const onNewScanResult = (decodedText, decodedResult) => {
-        
-        setData({
-            redirect: true,
-            decodedText: decodedText
-        })
+        html5QrCodeState.stop().then((ignore) => {
+            setData({
+                redirect: true,
+                decodedText: decodedText
+            })
+        }).catch((err)=>{console.error(err)});
+
     };
     const buttonHandler = () => {
-        setData({
-            redirect: true,
-            decodedText: manual
-        })
+        html5QrCodeState.stop().then((ignore) => {
+            setData({
+                redirect: true,
+                decodedText: manual
+            })
+        }).catch((err)=>{console.error(err)});
+       
     }
     const inputEnterHandler = (e) => {
-        
+
         if (e.key === "Enter") {
             e.preventDefault();
+
+            html5QrCodeState.stop();
             buttonHandler();
         }
-        
+
     }
-  
+    const passScanner = (html5QrCode) => {
+        setHtml5QrCodeState(html5QrCode);
+    }
     return (
         <div className="Scanner-main">
             <div className='Scanner-titulo' >
@@ -53,6 +62,7 @@ const Scanner = () => {
                         qrbox={200}
                         disableFlip={false}
                         qrCodeSuccessCallback={onNewScanResult}
+                        passScanner= {passScanner}
                     />
                 </div>
             }
@@ -60,7 +70,7 @@ const Scanner = () => {
                 <span>Introducir codigo</span>
             </div>
             <div className='Scanner-buscador-container'>
-                <input onChange={(e) => {  setManual(e.target.value);}} onKeyDown={(e) => { inputEnterHandler(e) }}></input>
+                <input onChange={(e) => { setManual(e.target.value); }} onKeyDown={(e) => { inputEnterHandler(e) }}></input>
                 <button onClick={(e) => { buttonHandler() }}>Buscar</button>
             </div>
 

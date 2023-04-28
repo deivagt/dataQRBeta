@@ -21,7 +21,6 @@ const createConfig = (props) => {
     }
     return config;
 };
-let html5QrCode = null;
 const Html5QrcodePlugin = (props) => {
 
     useEffect(() => {
@@ -31,9 +30,9 @@ const Html5QrcodePlugin = (props) => {
         if (!(props.qrCodeSuccessCallback)) {
             throw "qrCodeSuccessCallback is required callback.";
         }
-        html5QrCode = new Html5Qrcode(qrcodeRegionId);
+        const html5QrCode = new Html5Qrcode(qrcodeRegionId);
         html5QrCode.start({ facingMode: "environment" }, config, props.qrCodeSuccessCallback);
-        
+        props.passScanner(html5QrCode)
         
     }, []);
 
