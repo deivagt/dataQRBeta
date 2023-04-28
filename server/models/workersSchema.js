@@ -6,6 +6,10 @@ const workersSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
+    tipoDoc:{
+        type: Number,
+        required: true,
+    },
     fechaDocumento:{
         type: String,
         required: true,

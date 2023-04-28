@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './Home.css'
 
 
 const Home = () => {
@@ -7,8 +7,8 @@ const Home = () => {
  
 
     return (
-        <div className="App">
-          <div>home</div>
+        <div className="Home-container">
+          <h1>Sistema de consulta de datos Altamira</h1>
         </div>
     );
 }
