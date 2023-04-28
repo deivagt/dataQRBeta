@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Navigate } from 'react-router-dom'
 import Html5QrcodePlugin from '../../components/Html5QrcodeScannerPlugin/Html5QrcodeScannerPlugin'
 import './Scanner.css'
-
+import { unmountComponentAtNode } from 'react-dom';
+const qrcodeRegionId = "html5qr-code-full-region"; 
 const Scanner = () => {
     const [data, setData] = useState({
         redirect: false,
@@ -16,17 +17,21 @@ const Scanner = () => {
                 redirect: true,
                 decodedText: decodedText
             })
-        }).catch((err)=>{console.error(err)});
+            unmountComponentAtNode(document.getElementById(qrcodeRegionId))
+        }).catch((err) => { console.error(err) });
 
     };
-    const buttonHandler = () => {
-        html5QrCodeState.stop().then((ignore) => {
+    const buttonHandler =   () => {
+          html5QrCodeState.stop().then((ignore) => {
             setData({
                 redirect: true,
                 decodedText: manual
             })
-        }).catch((err)=>{console.error(err)});
-       
+            unmountComponentAtNode(document.getElementById(qrcodeRegionId))
+        })
+
+
+
     }
     const inputEnterHandler = (e) => {
 
@@ -62,7 +67,7 @@ const Scanner = () => {
                         qrbox={200}
                         disableFlip={false}
                         qrCodeSuccessCallback={onNewScanResult}
-                        passScanner= {passScanner}
+                        passScanner={passScanner}
                     />
                 </div>
             }
